@@ -24,7 +24,6 @@ function PLUGIN:Available()
             local tag = release.tag_name
             local version = tag
             local rolling = false
-            local checksum = nil
 
             -- Ignore duplicated Windows release
             if not tag:find("windows") then
@@ -38,7 +37,6 @@ function PLUGIN:Available()
                     version = version,
                     note = release.name or "",
                     rolling = rolling,
-                    checksum = checksum,
                 })
             end
         end

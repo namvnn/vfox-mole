@@ -10,17 +10,16 @@ function PLUGIN:PostInstall(ctx)
     local mkdir_temp_status_code = os.execute("cd " .. path .. " && mkdir temp")
     if mkdir_temp_status_code ~= 0 then
         error(
-            "Failed to create temp/ with status code "
-                .. mkdir_temp_status_code
+            "Failed to create temp/ with status code " .. mkdir_temp_status_code
         )
     end
 
-    local mv_to_temp_status_code =
+    local mv_bin_to_temp_status_code =
         os.execute("cd " .. path .. " && mv ./mo ./mole ./bin/ ./lib/ temp/")
-    if mv_to_temp_status_code ~= 0 then
+    if mv_bin_to_temp_status_code ~= 0 then
         error(
             "Failed to move files to temp/ with status code "
-                .. mv_to_temp_status_code
+                .. mv_bin_to_temp_status_code
         )
     end
 
