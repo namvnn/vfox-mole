@@ -44,13 +44,13 @@ end
 function M.post_install(root)
     local root_path = util.shell_quote(root)
 
-    util.run("cd " .. root_path .. " && make build")
-    util.run("cd " .. root_path .. " && mkdir temp/")
-    util.run("cd " .. root_path .. " && mv ./mo ./mole ./bin/ ./lib/ temp/")
-    util.run("cd " .. root_path .. " && mv temp/ bin/")
     util.run(
         "cd "
             .. root_path
+            .. " && make build"
+            .. " && mkdir temp/"
+            .. " && mv ./mo ./mole ./bin/ ./lib/ temp/"
+            .. " && mv temp/ bin/"
             .. " && find . -not -name bin -depth 1 -exec rm -rf {} '+'"
     )
 end
