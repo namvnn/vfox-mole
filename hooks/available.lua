@@ -1,4 +1,6 @@
+--- @type http
 local http = require("http")
+--- @type json
 local json = require("json")
 
 function PLUGIN:Available()
@@ -17,30 +19,21 @@ function PLUGIN:Available()
     end
 
     local releases = json.decode(resp.body)
-    local result = {}
+    local versions = {}
 
     for _, release in ipairs(releases) do
         if not release.draft then
-            local tag = release.tag_name
-            local version = tag
-            local rolling = false
+            local version = release.tag_name:match("^V(%d+%.%d+%.%d+)$")
+            local note = release.name or ""
 
-            -- Ignore duplicated Windows release
-            if not tag:find("windows") then
-                if tag == "nightly" or tag == "stable" then
-                    rolling = true
-                else
-                    version = tag:gsub("^V", "")
-                end
-
-                table.insert(result, {
+            if version then
+                table.insert(versions, {
                     version = version,
-                    note = release.name or "",
-                    rolling = rolling,
+                    note = note,
                 })
             end
         end
     end
 
-    return result
+    return versions
 end
