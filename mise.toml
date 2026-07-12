@@ -1,6 +1,6 @@
 [tools]
-"aqua:JohnnyMorganz/StyLua" = "2.5.2"
-"aqua:LuaLS/lua-language-server" = "3.18.2"
+"aqua:JohnnyMorganz/StyLua" = "latest"
+"aqua:LuaLS/lua-language-server" = "latest"
 "vfox:mise-plugins/vfox-lua" = "5.5"
 
 [tasks.fmt]
