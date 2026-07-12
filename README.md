@@ -1,3 +1,3 @@
 # vfox-mole
 
-Mole plugin for mise and vfox.
+mise and vfox plugin for [Mole](https://github.com/tw93/Mole).
