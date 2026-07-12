@@ -1,0 +1,12 @@
+[tools]
+"aqua:JohnnyMorganz/StyLua" = "2.5.2"
+"aqua:LuaLS/lua-language-server" = "3.18.2"
+"vfox:mise-plugins/vfox-lua" = "5.5"
+
+[tasks.fmt]
+description = "Format Lua scripts"
+run = "stylua ."
+
+[tasks.lint]
+description = "Lint Lua scripts"
+run = "lua-language-server --check ."
