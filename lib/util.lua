@@ -3,8 +3,8 @@ local M = {}
 --- Recursively converts value into a human-readable string.
 ---
 --- @param value any The value to convert to string.
---- @param space? integer The indentation in spaces. Defaults to `4`.
---- @return string stringified A string representing the given value, or undefined.
+--- @param space? integer The number of spaces in indentation. Defaults to `4`.
+--- @return string stringified A string representing the given value.
 function M.stringify(value, space)
     local indent = string.rep(" ", space or 4)
 
@@ -61,7 +61,7 @@ end
 --- Source: https://github.com/jdx/vfox-graalvm/blob/0a20281f1bfae678cb0d0238bfebb2f8cccc9eb0/lib/util.lua#L6
 ---
 --- @param value string The string to quote.
---- @return string quoted The shell-escaped string.
+--- @return string quoted A shell-escaped string.
 function M.shell_quote(value)
     return "'" .. string.gsub(tostring(value), "'", "'\\''") .. "'"
 end
@@ -71,7 +71,6 @@ end
 --- Source: https://github.com/jdx/vfox-graalvm/blob/0a20281f1bfae678cb0d0238bfebb2f8cccc9eb0/lib/util.lua#L10
 ---
 --- @param cmd string The shell command to execute.
---- @raise string If the command exits with a non-zero status or otherwise fails.
 function M.run(cmd)
     local ok, reason, code = os.execute(cmd)
     if ok ~= true and ok ~= 0 then
